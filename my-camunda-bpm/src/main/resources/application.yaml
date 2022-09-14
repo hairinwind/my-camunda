@@ -1,0 +1,20 @@
+spring:
+  datasource:
+    url: jdbc:mariadb://localhost:3306/camunda
+    username: root
+
+camunda.bpm:
+  admin-user:
+    id: admin
+    password: admin
+  process-engine-name: default
+  database:
+    type: mariadb
+    jdbc-batch-processing: false
+  history-level: FULL
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

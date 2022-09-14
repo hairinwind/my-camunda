@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_1dbkyao" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.2.0">
+  <bpmn:process id="updateStatus" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_updateStatus" name="Start update request status">
+      <bpmn:outgoing>Flow_1tdkvnj</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:serviceTask id="ExternalTask_updateStatus" name="Update request status" camunda:type="external" camunda:topic="updateRequests">
+      <bpmn:incoming>Flow_1tdkvnj</bpmn:incoming>
+      <bpmn:outgoing>Flow_133jaik</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="Flow_1tdkvnj" sourceRef="StartEvent_updateStatus" targetRef="ExternalTask_updateStatus" />
+    <bpmn:endEvent id="Event_0iek2xu" name="Request status updated">
+      <bpmn:incoming>Flow_133jaik</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_133jaik" sourceRef="ExternalTask_updateStatus" targetRef="Event_0iek2xu" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="updateStatus">
+      <bpmndi:BPMNEdge id="Flow_133jaik_di" bpmnElement="Flow_133jaik">
+        <di:waypoint x="390" y="117" />
+        <di:waypoint x="472" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1tdkvnj_di" bpmnElement="Flow_1tdkvnj">
+        <di:waypoint x="215" y="117" />
+        <di:waypoint x="290" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_updateStatus">
+        <dc:Bounds x="179" y="99" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="163" y="142" width="70" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1wygi51_di" bpmnElement="ExternalTask_updateStatus">
+        <dc:Bounds x="290" y="77" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0iek2xu_di" bpmnElement="Event_0iek2xu">
+        <dc:Bounds x="472" y="99" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="454" y="142" width="74" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
