@@ -1,0 +1,19 @@
+server.port: 9002
+
+camunda.bpm:
+  process-engine-name: default
+  history-level: full
+#  job-execution:
+#    deployment-aware: true
+#    enabled: false
+
+spring:
+  datasource:
+    url: jdbc:mariadb://localhost:3306/camunda
+    username: root
+    password:
+    driver-class-name: org.mariadb.jdbc.Driver
+
+logging.level:
+  org.camunda.bpm: DEBUG
+  org.springframework: INFO
